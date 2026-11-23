@@ -90,10 +90,19 @@ write again after `SetDictionary`.
   block is the collector's. `TestLiveness` abandons 100 streams, and
   their finalizers free them.
 
-**To do:**
+**BSD hosts (2026-11-23, poc 0.15.0, HEAD 3966add):** `gmake test`
+passes on alerik (FreeBSD 15.1 amd64), rackhir (FreeBSD 15.1 arm64),
+artos (NetBSD 11.0 amd64), yishana (NetBSD 11.0 i386), jherek (OpenBSD
+7.9 amd64) and cymoril (OpenBSD 7.9 i386), each against its base
+system's zlib: 115 ok lines, no FAIL, exit 0. On the i386 hosts
+`uLong` has 32 bits.
 
-- Test on the six BSD hosts (zlib in each base system). The i386 hosts
-  (yishana, cymoril) matter most: their `uLong` has 32 bits.
-- `make install` on atla and the hosts, before polout's Phase 11.
-- Code 68 (`AssertZlib`) has no halt test: only exhausted memory, a
-  mismatched library or a bug in the binding can trigger it.
+**Installed (2026-11-23, from 3966add):** `make install` into
+`~/.local/lib/poc` (OC and OC-g) on atla and the six hosts. On atla
+the example, built against the installed copy, prints its expected
+output. Install again after upgrading poc, which refuses a library
+another poc built.
+
+**Not tested:** code 68 (`AssertZlib`) has no halt test. Only
+exhausted memory, a mismatched library or a bug in the binding can
+trigger it.

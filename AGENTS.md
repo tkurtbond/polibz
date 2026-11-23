@@ -71,7 +71,9 @@ pointer); `Zlib` uses `INTEGER` and `LONGINT`.
 
 On the BSD hosts (polout's AGENTS.md lists them): copy the tree to
 `~/tmp`, `gmake test`, judge by the exit status and by counting `FAIL`
-and `assertion failed` lines, then remove it. Not yet done (PLAN.md).
+and `assertion failed` lines, then remove it. Use a `git archive` of
+HEAD, so what is tested is what is committed. polibz needs no other po*
+library. All six passed and have it installed (PLAN.md, "State").
 
 ## Layout
 
